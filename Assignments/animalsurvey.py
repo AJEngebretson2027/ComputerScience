@@ -1,0 +1,5 @@
+favorite_animal = input("what is your favorite animal?\n>")
+detail_1 = input("why do you like them?\n>")
+deatil_2 = input("where do they live?\n?")
+detail_3 = input("what is a fun fact about them?\n")
+detail_4 = input("what color are they?\n>")
