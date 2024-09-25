@@ -1,5 +1,6 @@
 favorite_animal = input("what is your favorite animal?\n>")
 detail_1 = input("why do you like them?\n>")
-deatil_2 = input("where do they live?\n?")
-detail_3 = input("what is a fun fact about them?\n")
+detail_2 = input("where do they live?\n>")
+detail_3 = input("what is a fun fact about them?\n>")
 detail_4 = input("what color are they?\n>")
+print("Your favorite animal are " + favorite_animal + " because " + detail_1 + ". They live in " + detail_2 + " and " + detail_3 + ". They are "+ detail_4 + ".")
