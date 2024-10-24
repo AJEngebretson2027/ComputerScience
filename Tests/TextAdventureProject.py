@@ -3,6 +3,8 @@
 # you are starting after you take a job from cortland to escort a caravan for a week to Carewick
 
 health = 10
+ac = 17     #ac stands for armor class, it is how high the enemy has to roll to hit you. you can increase this through armor, class skills, or some feats
+exp = 0
 
 import random
 
@@ -107,7 +109,6 @@ def wolf_ambush():
      print("you react fast, what do you do?")
      print("1. charge the first wolf you see")
      print("2. move up and yell to attract the wolfs")
-     print("3. wake up your party members")
      choice2 = input(">")
      choice2 = int(choice2)
      if choice2 == 1:
@@ -115,9 +116,6 @@ def wolf_ambush():
         
      elif choice2 == 2:
           attract_wolfs
-
-     elif choice2 == 3:
-        wake_party
 
 def attack_wolf2():
     print("you cast burning blade before striking the wolf")
@@ -133,4 +131,59 @@ def attack_wolf2():
          print("you hit the wolf, dealing " + str(total_charge + 4) + " damage")
          if total_charge >= 14:
               print("you instantly split the wolf in half, killing it")
+              party_wolf
+         elif total_charge < 13:
+              print("you gravely injure the wolf, but it is still standing")
+              party_wolf
+    elif charge_wolf < 13:
+         print("you strike at the wolf, but it dodges before you hit it.")
+         party_wolf
 
+def attract_wolfs():
+     print("you move up close to all the wolfs and you yell to get their attention")
+     print("three wolfs turn their head, seeing someone seperated from the group they take the opportunity to attack.")
+     wolf_attack1 = (random.randint(1,20))
+     wolf_attack2 = (random.randint(1,20))
+     wolf_attack3 = (random.randint(1,20))
+     global health
+     
+     if wolf_attack1 >= ac:
+          wolf_damage1 = (random.randint(1,6))
+          print("the wolf bites you in the arm, dealing " + str(wolf_damage1 + 1) + " damage")
+          health = health - wolf_damage1
+     elif wolf_attack1 < ac:
+          print("the wolf attempts to bite you, but you dodge out the way before the bite can land")
+    
+     if wolf_attack2 >= ac:
+          wolf_damage2 = (random.randint(1,6))
+          print("the wolf bites you in the leg, dealing " + str(wolf_damage2 + 1) + " damage")
+          health = health - wolf_damage2
+     elif wolf_attack2 < ac:
+          print("you use the shaft of the halberd to deflect a wolfs bite")
+
+     if wolf_attack3 >= ac:
+          wolf_damage3 = (random.randint(1,6))
+          print("the wolf bites you in the arm, dealing " + str(wolf_damage3 + 1) + " damage")
+          health = health - wolf_damage3
+     elif wolf_attack3 < ac:
+          print("you dodge out the way of the last attack")
+
+     party_wolf
+
+def party_wolf():
+     print("your party members move in, killing three of them while your fighter, sherrif, is grappling a wolf")    #sherrif is spelled incorrectly on purpose
+     print("sherrif knocks out the wolf, as you manage to kill the last one before it can bite you")                #we actually did this and named him par'ner
+     print(" you gain 250 exp")
+     global exp
+     exp = exp + 250
+     print("what do you do now?")
+     print("1. go back to sleep")
+     print("2. watch as the party attempts to tame the wolf")
+     choice = input(">")
+     choice = int(choice)
+     if choice == 1:
+          print("you are to tired for their shenanigans, you head back into your tent to take off your armor and head to sleep")
+          next_day
+     
+     elif choice == 2:
+        print("you decide to stay for a bit a before heading to sleep")
