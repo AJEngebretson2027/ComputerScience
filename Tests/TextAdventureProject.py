@@ -5,6 +5,7 @@
 health = 10
 ac = 17     #ac stands for armor class, it is how high the enemy has to roll to hit you. you can increase this through armor, class skills, or some feats
 exp = 0
+level = 1
 
 import random
 
@@ -167,8 +168,13 @@ def attract_wolfs():
           health = health - wolf_damage3
      elif wolf_attack3 < ac:
           print("you dodge out the way of the last attack")
-
-     party_wolf
+     
+     if health < 0:
+          knocked_out
+     elif health >= 0:
+          party_wolf
+     elif health <= -10:      #this is a possiblity, as you need to get to -10 hp to fully die, or you get knocked out, and if all 3 wolfs hit max damage, they deal 21 damage
+          death
 
 def party_wolf():
      print("your party members move in, killing three of them while your fighter, sherrif, is grappling a wolf")    #sherrif is spelled incorrectly on purpose
@@ -187,3 +193,65 @@ def party_wolf():
      
      elif choice == 2:
         print("you decide to stay for a bit a before heading to sleep")
+        print("ashmook attempts to feed it some meat, which the wolf didnt run but was still wary of us")
+        print("You start healing everyone who took damage, bandaging everyone who took damage")
+        print("Grey bane tried to heal you but failed, but ashmook successfully managed to heal you which everyone tried to heal you as well")        #this happened and everyone but ashmook rolled low
+        print("you head back in your tent and head to sleep")
+        next_day
+
+def next_day():
+     global health
+     health = health + 2
+     if health >= 10:
+          health = 10
+     print("you wake up the next day, getting dressed and feeling a bit better then last night")         # resting restores your level worth of hp, but if you were healed then you would heal double your level
+     print(" you pack up your tent and put it in the back of the caravan. continuing back on the road")
+     print("only one eventful thing happened while walking, you noticed a small humanoid watching you, pretty deep into the tree line with a wolf at their side")
+     print("what do you do?")
+     print("1. call out to them")
+     print("2. attempt to reach them")
+     choice = input(">")
+     choice = int(choice)
+     if choice == 1:
+          print("you call out to them, but all they do is get on the wolf and ride away")
+          print("you know the wolf is too fast for you to catch up so you continue on your way")
+          day_night
+     elif choice == 2:
+          print("you head into the brush, getting to about halfway to them before the person gets on the wolf and rides off")
+          day_night
+
+def day_night():         # destroyed campsite
+     print("other then the humanoid watching you, nothing else happens")
+     print("your party finds a good resting place and sets up camp for the night, on your watch, nothing happens and the night passes uneventfully")
+     print("its the next day and you head back on the road, eventually getting to a turn in the road, where you can see a caravan flipped, with dead people and horses")
+     print(" it seemed like things were ransacked from the caravan, and only the clothes remained on the bodies")
+     print("there seems to be a dirt trail coming from the main path, what do you do?")
+     print("1. look around to see what happened")
+     print("2. head down the dirt trail")
+     print("3. keep heading down the path, this doesn't concern us")
+     choice = input(">")
+     choice = int(choice)
+     if choice == 1:
+          investigation
+     elif choice == 2:
+          dirt_trail
+     elif choice == 3:
+          print("you decide to stay in the back of the caravan as you remember cortland left a box of books that cortland left open")
+          print("one book catches your eye, Beware! Kygel's Keep. You open it up and start reading")
+          print("Kygel's Keep was a castle that is right next to Carewick. Its lord mysteriously dissapeared and it was left in disrepair. it is said that a evil green dragon named kygel moved in below the castle. it is inhabited by Kobolds and mostly keep to themselves")
+          print("your party members return from a cave you didnt see and it seems like reef took some fall damage as you were informed there was a pitfall trap.")
+          print("you all decide that its best to keep going")
+          the_bridge
+
+def investigation():
+     print("you look at the bodies, and you see claw marks, but its too big to be a wolfs claw")
+     print("you go over to a tent, seeing large claw marks in the cloth and a body sticking out from the tent.")
+     print("you see a cave just down the trail, there is a sign next to with a skull engraved into the wood, as you get closer you see a sign inside saying to keep out")
+     print("do you enter?")
+     print("1. yes")
+     print("2. no")
+     choice = input(">")
+     choice = int(choice)
+
+def the_bridge():
+     print("you make it to a medium sized bridge, and before you cross the person watching you reappears")
