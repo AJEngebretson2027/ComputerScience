@@ -21,15 +21,15 @@ def adv_start():
     print("you rolled " + str(spot + 3) + " for spot")          # in 3.5e perception does not exist, instead being either spot, listen, or search
     print("you rolled " + str(listen + 1) + " for listen")      # you can have different skill modifiers, based on the ability mod, rank, misc changes, and armor check penalties (ACP)
 
-    if spot >= 14:
+    if spot + 3 >= 14:
         print("As you are looking around, you spot a wolf watching you intently.") 
         spot_wolf
 
-    elif listen >= 14:
+    elif listen + 1 >= 14:
         print("You hear a sound from the brush around 20 feet away.")
         hear_something      #this will ultimately lead to spot_wolf
 
-    elif spot >= 14 and listen >= 14:       #if you are good at gambling lol
+    elif spot + 3 >= 14 and listen + 1 >= 14:       #if you are good at gambling lol
         print("As you are looking around you hear something move, you look towards the sound and spot a wolf.")
         spot_wolf       
 
@@ -75,17 +75,17 @@ def attack_wolf():
     attack_AoO = (random.randint(1,20))
     print ("you rolled " + str(attack_AoO + 6) + "for attack")
 
-    if attack_AoO >= 14:
+    if attack_AoO + 6 >= 14:
             damage_AoO = (random.randint(1,10))
             print("you hit the wolf and deal " + str(damage_AoO + 4) + "points of damage")      #im just now realizing how many nested if statements i need for this
-            if damage_AoO == 14:
+            if damage_AoO + 4 == 14:
                 print("you kill the wolf before it can return to its pack.")
                 wolf_ambush
 
             else:
                 print("you injure the wolf, but it manages to escape.")
                 wolf_ambush
-    elif attack_AoO < 13:
+    elif attack_AoO + 6 < 13:
                     print ("you miss the wolf as it runs away, back to its pack")
                     wolf_ambush
 
@@ -123,20 +123,20 @@ def attack_wolf2():
     charge_wolf = (random.randint(1,20))
     print("you rolled " + str(charge_wolf + 8) + " for your attack")
 
-    if charge_wolf >= 14:
+    if charge_wolf + 8 >= 14:
          print("you manage to hit the wolf")
          charge_damage = (random.randint(1,10))
          bb_damage = (random.randint(1,6))
          total_charge = charge_damage + bb_damage
 
-         print("you hit the wolf, dealing " + str(total_charge + 4) + " damage")
-         if total_charge >= 14:
+         print("you hit the wolf, dealing " + str(total_charge + 5) + " damage")
+         if total_charge + 5 >= 14:
               print("you instantly split the wolf in half, killing it")
               party_wolf
-         elif total_charge < 13:
+         elif total_charge + 5 < 13:
               print("you gravely injure the wolf, but it is still standing")
               party_wolf
-    elif charge_wolf < 13:
+    elif charge_wolf + 8 < 13:
          print("you strike at the wolf, but it dodges before you hit it.")
          party_wolf
 
@@ -148,24 +148,24 @@ def attract_wolfs():
      wolf_attack3 = (random.randint(1,20))
      global health
      
-     if wolf_attack1 >= ac:
+     if wolf_attack1 + 3 >= ac:
           wolf_damage1 = (random.randint(1,6))
           print("the wolf bites you in the arm, dealing " + str(wolf_damage1 + 1) + " damage")
-          health = health - wolf_damage1
+          health = health - wolf_damage1 + 1
      elif wolf_attack1 < ac:
           print("the wolf attempts to bite you, but you dodge out the way before the bite can land")
     
-     if wolf_attack2 >= ac:
+     if wolf_attack2 + 3 >= ac:
           wolf_damage2 = (random.randint(1,6))
           print("the wolf bites you in the leg, dealing " + str(wolf_damage2 + 1) + " damage")
-          health = health - wolf_damage2
+          health = health - wolf_damage2 + 1
      elif wolf_attack2 < ac:
           print("you use the shaft of the halberd to deflect a wolfs bite")
 
-     if wolf_attack3 >= ac:
+     if wolf_attack3 + 3 >= ac:
           wolf_damage3 = (random.randint(1,6))
           print("the wolf bites you in the arm, dealing " + str(wolf_damage3 + 1) + " damage")
-          health = health - wolf_damage3
+          health = health - wolf_damage3 + 1
      elif wolf_attack3 < ac:
           print("you dodge out the way of the last attack")
      
@@ -245,13 +245,81 @@ def day_night():         # destroyed campsite
 
 def investigation():
      print("you look at the bodies, and you see claw marks, but its too big to be a wolfs claw")
-     print("you go over to a tent, seeing large claw marks in the cloth and a body sticking out from the tent.")
+     print("heading over to a tent, seeing large claw marks in the cloth and a body sticking out from the tent.")
      print("you see a cave just down the trail, there is a sign next to with a skull engraved into the wood, as you get closer you see a sign inside saying to keep out")
      print("do you enter?")
      print("1. yes")
      print("2. no")
      choice = input(">")
      choice = int(choice)
+     if choice == 1:
+          cave
+     elif choice == 2:
+          print("you decide to stay behind, watching the caravan while everyone else goes inside")
 
 def the_bridge():
-     print("you make it to a medium sized bridge, and before you cross the person watching you reappears")
+     print("after a bit you make it to a medium sized bridge, and before you cross, the person watching you reappears")
+     print("")
+
+def dirt_trail():
+     print ("you walk along the dirt trail and at the end of it there is a cave. there is a sign at the entrance with a skull engraved into it")
+     print("as you get closer you see a sign saying to keep out")
+     print("do you enter?")
+     print("1. yes")
+     print("2. no")
+     choice = input(">")
+     choice = int(choice)
+     if choice == 1:
+          cave
+     elif choice == 2:
+          print("you decide that its best to not to go into the cave, staying behind to protect the caravan")
+          the_bridge
+
+def cave():
+     print("you carfully head into the cave, when you get the to sign you see that the cave goes to the left and the right")
+     print("to the left you see a barricade blocking your way, and to the right is another turn")
+     print("what do you do?")
+     print("1. head to the right")
+     print("2. break down the barricade")
+     print("3. lets head back, this isnt worth it")
+     choice = input(">")
+     choice = int(choice)
+     if choice == 1:
+          print("you walk deeper into the cave and you turn right again, seeing a body and a activated trap")
+          deeper_cave
+     elif choice == 2:
+          print("you aren't as strong as the other party members so you stand guard as they break it down")
+          break_bar
+     elif choice == 3:
+          print("you think this is too sketchy and you decide to head back")
+          the_bridge
+
+def deeper_cave():
+     print("you walk past the body, moving silently")
+     print("there is a wider area and a door at the back right of the opening")
+     print("what do you do?")
+     print("1. head through the middle")
+     print("2. stick to the right wall")
+     print("3. stick to the left wall")
+     print("4. this is getting riskier, we should head back")
+     choice = input(">")
+     choice = int(choice)
+     if choice == 1:
+          print("as you are walking, you feel the ground give out, act fast or fall")
+          print("because of your race, you have a devils favor which will increase your reflex by +2. do you use it?")
+          print("1. yes")
+          print("2. no")
+          devils_favor = input(">")
+          devils_favor = int(devils_favor)
+          if devils_favor == 1:
+               reflex_devil = (random.randint(1,20))
+               print("you rolled " + str(reflex_devil + 7) + " for reflex")
+               if reflex_devil + 7 >= 20:
+                    print("you just barely jump out the way, as a 15 foot hole opens up before you")
+                    print("knowing there are dangerous traps, you head back")
+                    the_bridge
+               elif reflex_devil + 7 < 20:
+               
+                    print("you fall in, falling hard on your back, taking " + str(fall1 + fall2) + " damage")
+
+
