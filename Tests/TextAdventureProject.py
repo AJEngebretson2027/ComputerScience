@@ -319,7 +319,19 @@ def deeper_cave():
                     print("knowing there are dangerous traps, you head back")
                     the_bridge
                elif reflex_devil + 7 < 20:
-               
-                    print("you fall in, falling hard on your back, taking " + str(fall1 + fall2) + " damage")
+                    fall1 = (random.randint(1,6))
+                    fall2 = (random.randint(1,6))
+                    total_fall = fall1 + fall2
+                    print("you fall in, falling hard on your back, taking " + str(total_fall) + " damage")
+                    global health
+                    if health - total_fall >= 1:
+                         print("you live, but you are hurting.")
+                         print("one of your party members throws down a rope, you grab on and climb back up deciding to head back")
+                         the_bridge
+                    
+                    elif health - total_fall < 0:
+                         print("you are knocked unconscious")
+                         knocked_out
+
 
 
