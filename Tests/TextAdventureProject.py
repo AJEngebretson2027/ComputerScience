@@ -306,7 +306,7 @@ def deeper_cave():
      choice = int(choice)
      if choice == 1:
           print("as you are walking, you feel the ground give out, act fast or fall")
-          print("because of your race, you have a devils favor which will increase your reflex by +2. do you use it?")
+          print("because of your race, you have a devils favor which will increase your reflex by +2. do you use it?")       # my character is a hellbred, which automatically has devil's favor. this allows you to add +2 to hit, checks, or saves and refreshes at the end of a day
           print("1. yes")
           print("2. no")
           devils_favor = input(">")
@@ -326,12 +326,155 @@ def deeper_cave():
                     global health
                     if health - total_fall >= 1:
                          print("you live, but you are hurting.")
-                         print("one of your party members throws down a rope, you grab on and climb back up deciding to head back")
+                         print("one of your party members throws down a rope, you grab on and climb back up, deciding to head back")
                          the_bridge
                     
                     elif health - total_fall < 0:
                          print("you are knocked unconscious")
                          knocked_out
+          elif devils_favor == 2:
+               reflex_save = (random.randint(1,20))
+               print("you rolled " + str(reflex_save + 5) + " for reflex")
+               if reflex_save + 5 >= 20:
+                    print("you just barely jump out the way, as a 15 foot hole opens up before you")
+                    print("knowing there are dangerous traps, you head back")
+                    the_bridge
+               elif reflex_save + 5 < 20:
+                    fall1 = (random.randint(1,6))
+                    fall2 = (random.randint(1,6))
+                    total_fall = fall1 + fall2
+                    print("you fall in, falling hard on your back, taking " + str(total_fall) + " damage")
+                    global health
+                    if health - total_fall >= 1:
+                         print("you live, but you are hurting.")
+                         print("one of your party members throws down a rope, you grab on and climb back up, deciding to head back")
+                         the_bridge
+                    
+                    elif health - total_fall < 0:
+                         print("you are knocked unconscious")
+                         knocked_out
+     elif choice == 2:
+          print("you follow the right wall, being careful to not activate any traps")
+          print("you successfully make it to the door, do you open it?")
+          print("1. yes, lets see whats behind here")
+          print("2. no, this seems a bit too convenient")
+          door = input(">")
+          door = int(door)
+          if door == 1:
+               print("you open the door carefully, as you see a werewolf, eating a corpse")
+               werewolf
+          
+          elif door == 2:
+               print("deeming this too risky, you decide to head back with your party")
+               the_bridge
+     elif choice == 3:
+          print("you walk along the left wall, as spikes come from a wall")
+          print("because of your race, you have a devils favor which will increase your reflex by +2. do you use it?")
+          print("1. yes")
+          print("2. no")
+          devils_favor2 = input(">")
+          devils_favor2 = int(devils_favor2)
+          if devils_favor2 == 1:
+               reflex_devil2 = (random.randint(1,20))
+               print("you rolled " + str(reflex_devil2 + 7) + " for reflex")
+               if reflex_devil2 + 7 >= 20:
+                    print("you step back before the spikes can hit you")
+                    print("knowing there are dangerous traps, you head back")
+                    the_bridge
+               elif reflex_devil2 + 7 < 20:
+                    spikes = (random.randint(1,6))
+                    spikes2 = (random.randint(1,6))
+                    total_spikes = spikes + spikes2
+                    print("your leg is pierced by the spikes, taking " + str(total_fall) + " damage")
+                    global health
+                    if health - total_spikes >= 1:
+                         print("you live, but you are hurting.")
+                         print("now having your leg bleeding, you decide to head back")
+                         the_bridge
+                    
+                    elif health - total_fall < 0:
+                         print("you are knocked unconscious")
+                         knocked_out
+
+          elif devils_favor2 == 2:
+               reflex_save2 = (random.randint(1,20))
+               print("you rolled " + str(reflex_save2 + 5) + " for reflex")
+               if reflex_save2 + 5 >= 20:
+                    print("you just barely jump out the way, as a 15 foot hole opens up before you")
+                    print("knowing there are dangerous traps, you head back")
+                    the_bridge
+               elif reflex_save2 + 5 < 20:
+                    spikes = (random.randint(1,6))
+                    spikes2 = (random.randint(1,6))
+                    total_spikes = spikes + spikes2
+                    print("you fall in, falling hard on your back, taking " + str(total_spikes) + " damage")
+                    global health
+                    if health - total_spikes >= 1:
+                         print("you live, but you are hurting.")
+                         print("one of your party members throws down a rope, you grab on and climb back up, deciding to head back")
+                         the_bridge
+                    
+                    elif health - total_spikes < 0:
+                         print("you are knocked unconscious")
+                         knocked_out
+     elif choice == 4:
+          print("you decide to be careful, heading back to the caravan")
+          the_bridge
+
+def werewolf():
+     print("the werewolfs head snaps to your party, as it readies its claws")
+     print("it charges at you, attempting a bite")
+     bite = (random.randint(1,20))
+     if bite + 5 >= 17:
+          global health
+          bite_damage = (random.randint(1,6))
+          health = health - (bite_damage + 3)
+          print("its fangs sink into you, dealing " + str(bite_damage + 3) + " damage")
+          if health >= 1:
+               print("you are still up, striking it back")
+               print("you decide that you need to do as much damage as possible, using burning blade and clinging shadow strike")
+               attack_werewolf = random.randint(1,20)
+               if attack_werewolf + 6 >= 16:
+                    damage = (random.randint(1,10)) + (random.randint(1,6)) + (random.randint(1,6)) + 4
+                    print("you deal " + str(damage - 5) + " to the werewolf")
+                    if damage - 5 >= 20:
+                         print("you immediately kill the werewolf in one swing, gaining 150 exp")
+                         global exp
+                         exp = exp + 150
+                         the_bridge
+                    elif damage - 5 < 19:
+                         print("the werewolf is still standing but your teammates finish it off, gain 150 exp")
+                         global exp
+                         exp = exp + 150
+                         the_bridge
+               elif attack_werewolf < 16:
+                    print("the werewolf dodges out the way, but your teammate flank it and finish it off you gain 150 exp")
+                    global exp
+                    exp = exp + 150
+                    the_bridge
+          elif health <= 0:
+               print("you are knocked unconscious")
+               knocked_out
+     elif bite + 5 < 17:
+          print("the bite misses, allowing you to attack back")
+          print("you decide that you need to do as much damage as possible, using burning blade and clinging shadow strike")
+          attack_werewolf = random.randint(1,20)
+          if attack_werewolf + 6 >= 16:
+                    damage = (random.randint(1,10)) + (random.randint(1,6)) + (random.randint(1,6)) + 4
+                    print("you deal " + str(damage - 5) + " to the werewolf")
+                    if damage - 5 >= 20:
+                         print("you immediately kill the werewolf in one swing, gaining 150 exp")
+                         global exp
+                         exp = exp + 150
+                    elif damage - 5 < 19:
+                         print("the werewolf is still standing but your teammates finish it off, gain 150 exp")
+                         global exp
+                         exp = exp + 150
+          elif attack_werewolf < 16:
+                    print("the werewolf dodges out the way, but your teammate flank it and finish it off you gain 150 exp")
+                    global exp
+                    exp = exp + 150
+
 
 
 
