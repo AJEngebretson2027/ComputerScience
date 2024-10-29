@@ -259,7 +259,11 @@ def investigation():
 
 def the_bridge():
      print("after a bit you make it to a medium sized bridge, and before you cross, the person watching you reappears")
-     print("")
+     print("they reveal themself to be a druid, and to show that they are good, they heal the party back to full hp")
+     global health
+     health = 10
+     print("you thank them and start crossing the bridge, when you get to around the middle of the bridge you hear a whistle and 8 bandits come out of hiding")
+     bandits
 
 def dirt_trail():
      print ("you walk along the dirt trail and at the end of it there is a cave. there is a sign at the entrance with a skull engraved into it")
@@ -293,6 +297,63 @@ def cave():
      elif choice == 3:
           print("you think this is too sketchy and you decide to head back")
           the_bridge
+
+def break_bar():
+     print("while your party members are breaking down the barricade, you see a werewolf come from the other side of the cave")
+     print("you warn everyone before it charges at you, trying to bite you")
+     bite = (random.randint(1,20))
+     if bite + 5 >= 17:
+          global health
+          bite_damage = (random.randint(1,6))
+          health = health - (bite_damage + 3)
+          print("its fangs sink into you, dealing " + str(bite_damage + 3) + " damage")
+          if health >= 1:
+               print("you are still up, striking it back")
+               print("you decide that you need to do as much damage as possible, using burning blade and clinging shadow strike")
+               attack_werewolf = random.randint(1,20)
+               if attack_werewolf + 6 >= 16:
+                    damage = (random.randint(1,10)) + (random.randint(1,6)) + (random.randint(1,6)) + 4
+                    print("you deal " + str(damage - 5) + " to the werewolf")
+                    if damage - 5 >= 20:
+                         print("you immediately kill the werewolf in one swing, gaining 150 exp")
+                         global exp
+                         exp = exp + 150
+                         the_bridge
+                    elif damage - 5 < 19:
+                         print("the werewolf is still standing but your teammates finish it off, gain 150 exp")
+                         global exp
+                         exp = exp + 150
+                         the_bridge
+               elif attack_werewolf < 16:
+                    print("the werewolf dodges out the way, but your teammate flank it and finish it off you gain 150 exp")
+                    global exp
+                    exp = exp + 150
+                    the_bridge
+          elif health <= 0:
+               print("you are knocked unconscious")
+               knocked_out
+     elif bite + 5 < 17:
+          print("the bite misses, allowing you to attack back")
+          print("you decide that you need to do as much damage as possible, using burning blade and clinging shadow strike")
+          attack_werewolf = random.randint(1,20)
+          if attack_werewolf + 6 >= 16:
+                    damage = (random.randint(1,10)) + (random.randint(1,6)) + (random.randint(1,6)) + 4
+                    print("you deal " + str(damage - 5) + " to the werewolf")
+                    if damage - 5 >= 20:
+                         print("you immediately kill the werewolf in one swing, gaining 150 exp")
+                         global exp
+                         exp = exp + 150
+                         the_bridge
+                    elif damage - 5 < 19:
+                         print("the werewolf is still standing but your teammates finish it off, gain 150 exp")
+                         global exp
+                         exp = exp + 150
+                         the_bridge
+          elif attack_werewolf < 16:
+                    print("the werewolf dodges out the way, but your teammate flank it and finish it off, you gain 150 exp")
+                    global exp
+                    exp = exp + 150
+                    the_bridge
 
 def deeper_cave():
      print("you walk past the body, moving silently")
@@ -466,15 +527,48 @@ def werewolf():
                          print("you immediately kill the werewolf in one swing, gaining 150 exp")
                          global exp
                          exp = exp + 150
+                         the_bridge
                     elif damage - 5 < 19:
                          print("the werewolf is still standing but your teammates finish it off, gain 150 exp")
                          global exp
                          exp = exp + 150
+                         the_bridge
           elif attack_werewolf < 16:
-                    print("the werewolf dodges out the way, but your teammate flank it and finish it off you gain 150 exp")
+                    print("the werewolf dodges out the way, but your teammate flank it and finish it off, you gain 150 exp")
                     global exp
                     exp = exp + 150
+                    the_bridge
 
+def knocked_out():
+     print("you wake up, being healed by a druid, you stand up and start walking towards the bridge")
+     print("when you get to the middle of the bridge, you hear a whistle and 8 bandits come out of holes surrounding the bridge")
+     global health
+     health = 10
+     bandits
 
+def death():        #ending 1
+     print("as your life slips away from you, you feel your soul return to him")
+     print("ending 1: death")
+     print("would you like to retry?")
+     print("1. yes")
+     print("2. no")
+     retry = input(">")
+     retry = int(retry)
+     if retry == 1:
+          adv_start
+     elif retry == 2:
+          print("gg")
 
-
+def bandits():
+     print("the bandits block off the 2 entrances of the bridges")
+     print("they are offering to let you go for 10 gold pieces each and 5 gold peices for a box from the caravan")
+     print("somehow, your entire party has just enough to get all the cargo and people through")
+     print("what do you do?")
+     print("1. pay them off")
+     print("2. attempt to fight them")
+     print("3. stall for time")
+     choice = input(">")
+     choice = int(choice)
+     if choice ==1:
+          print("your party pays them off, allowing you access to the rest of the trail")
+          carewick_poor
