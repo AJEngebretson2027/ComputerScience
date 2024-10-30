@@ -6,6 +6,7 @@ health = 10
 ac = 17     #ac stands for armor class, it is how high the enemy has to roll to hit you. you can increase this through armor, class skills, or some feats
 exp = 0
 level = 1
+troll_hp = 63
 
 import random
 
@@ -569,6 +570,102 @@ def bandits():
      print("3. stall for time")
      choice = input(">")
      choice = int(choice)
-     if choice ==1:
-          print("your party pays them off, allowing you access to the rest of the trail")
+     if choice == 1:
+          print("your party pays them off, allowing you access to the rest of the trail to carewick")
           carewick_poor
+     if choice == 2:
+          print("you talk amoung your party members, deciding it is best to fight them, you decide to fight the bandit boss alone while everyone else holds off the others")
+          bandits_fight
+     if choice == 3:
+          print("you talk to them attempting to stall them, hoping for a miracle")
+          stalling
+
+def carewick_poor():          #ending 2
+     print("you make it to Carewick with the boxes and your lives, but with no gold")
+     print("you enter to carewick, finding cortland's brother and he pays you half of what was promised")
+     print("you attempt to agure with him that you should get 100 gold, but he does not budge")
+     print("you give up and go around town to find some work, eventually Grey Bane finds a job from the pawnshop owner; to get a sword back that was stolen by some kobolds")
+     print("he promises 4,000 gold between the 6 of you, and before you go he gives you each a magical item")
+     print("you thank him and head over to a place called Kygel's Keep")
+     print("ending 2: poorest you will be")
+     print("would you like to retry?")
+     print("1. yes")
+     print("2. no")
+     retry = input(">")
+     retry = int(retry)
+     if retry == 1:
+          adv_start
+     elif retry == 2:
+          print("gg")
+
+def stalling():
+     print("they seem annoyed, but you see one of them go off into the woods, saying they are checking something out")
+     print("do you stall again?")
+     print("1. yes")
+     print("2. no")
+     choice = input(">")
+     choice = int(choice)
+     if choice == 1:
+          print("you keep stalling, when the bandit comes running back being chased by a troll")
+          print("you turn to the bandit boss and after a bit of talking, convice him that you should work together")
+          bandits_troll
+     if choice == 2:
+          print("you decide its best to not push it, but but then the bandit comes running back, being chased by a troll")
+          print("you manage to convince the bandit boss that we have a bigger problem then eachother")
+          bandits_troll
+
+def bandits_troll():
+     print("you all ready up, as the fighting begins")
+     print("the bandits and your party go in and start striking the troll, as strikes are being dealt, you notice that it is regening its wounds")
+     print("you attempt to strike the troll")
+     global troll_hp
+     troll_hp = troll_hp - 35
+     attack_troll = (random.randint(1,20))
+     print("you rolled " + str(attack_troll + 5) + " to hit")
+     if attack_troll + 5 >= 16:
+          troll_damage = random.randint(1,10) + random.randint(1,6) + random.randint(1,6) + 4
+          print("you hit the troll for" + str(troll_damage) + " damage")
+          print("its standing but you noticed its wounds are not healing anymore")
+          global troll_hp
+          troll_hp = troll_hp - troll_damage
+          bandits_troll2
+     if attack_troll + 5 < 16:
+          print("your attack bounces off")
+          bandits_troll2
+
+def bandits_troll2():
+     print("you see a strike hit the bandit boss, and it looks like he is on his last legs")
+     print("you see sherrif impale the bandit leader with his greatsword, everyone sees this and are shocked, but this allows your party to kill multiple bandits at once")
+     print("you can either finish off the troll or a bandit next to you, what do you do?")
+     print("1. attack the troll")
+     print("2, attack the bandit")
+     choice = input(">")
+     choice = int(choice)
+     if choice == 1:
+          print("you strike the troll while it is distracted, allowing you to kill it in one hit")
+          print("the bandit attempts the strike you from behind")
+          enemy_bandit = random.randint(1,20) + 3
+          if enemy_bandit >= 17:
+               print("he strikes you for 7 damage")
+               global health
+               health = health - 7
+               print("you see your teammates finish off some other bandits")
+               print("you manage to get a sneaky strike in, dropping to his knees")
+               troll_end
+          if enemy_bandit < 16:
+               print("you spin around and parry his strike, as you see your party kill more bandits")
+               print("you manage to get a sneaky strike in, dropping to his knees")
+               troll_end
+     if choice == 2:
+          print("you strike at the bandit in the confusion, making him fall to the ground")
+          print("you see the troll kill another bandit as one of your party members finish off the troll")
+          troll_end
+
+def troll_end():    #ending 3
+     print("there are 4 bandits left as your party moves up")
+     print("they start to run away, knowing that it is futile to keep fighting")
+     print("as they scatter away, you realized you won the fight, and you gain 1000 exp")
+     print("you level up")
+     global exp
+     exp = exp + 1000
+     print("you keep going down the path and get to carewick")
