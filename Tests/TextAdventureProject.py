@@ -575,7 +575,8 @@ def bandits():
           carewick_poor
      if choice == 2:
           print("you talk amoung your party members, deciding it is best to fight them, you decide to fight the bandit boss alone while everyone else holds off the others")
-          bandits_fight
+          print("before you can start fighting them, a troll comes out the woods, you and the bandit boss agree you have bigger problems")
+          bandits_troll
      if choice == 3:
           print("you talk to them attempting to stall them, hoping for a miracle")
           stalling
@@ -630,7 +631,7 @@ def bandits_troll():
           troll_hp = troll_hp - troll_damage
           bandits_troll2
      if attack_troll + 5 < 16:
-          print("your attack bounces off")
+          print("your attack bounces off its hide")
           bandits_troll2
 
 def bandits_troll2():
@@ -668,4 +669,18 @@ def troll_end():    #ending 3
      print("you level up")
      global exp
      exp = exp + 1000
-     print("you keep going down the path and get to carewick")
+     print("beaten and battered, you keep heading down the trail to carewick")
+     print("you make it into the city and head over to cortlands brother, and he gives you the 100 gold as promised")
+     print("he gives you another job, to pass the boxes around the city, you complete it for 6 gold")
+     print("while passing out the boxes, Grey bane gets a quest from a pawnshop owner to get back a sword from some kobolds, and we would get 4000 gold")
+     print("you and your party head off to kygels keep")
+     print("ending 3: To Kygels Keep")
+     print("would you like to retry?")
+     print("1. yes")
+     print("2. no")
+     retry = input(">")
+     retry = int(retry)
+     if retry == 1:
+          adv_start
+     elif retry == 2:
+          print("gg")
