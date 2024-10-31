@@ -322,12 +322,10 @@ def break_bar():
                          the_bridge
                     elif damage - 5 < 19:
                          print("the werewolf is still standing but your teammates finish it off, gain 150 exp")
-                         global exp
                          exp = exp + 150
                          the_bridge
                elif attack_werewolf < 16:
                     print("the werewolf dodges out the way, but your teammate flank it and finish it off you gain 150 exp")
-                    global exp
                     exp = exp + 150
                     the_bridge
           elif health <= 0:
@@ -342,17 +340,14 @@ def break_bar():
                     print("you deal " + str(damage - 5) + " to the werewolf")
                     if damage - 5 >= 20:
                          print("you immediately kill the werewolf in one swing, gaining 150 exp")
-                         global exp
                          exp = exp + 150
                          the_bridge
                     elif damage - 5 < 19:
                          print("the werewolf is still standing but your teammates finish it off, gain 150 exp")
-                         global exp
                          exp = exp + 150
                          the_bridge
           elif attack_werewolf < 16:
                     print("the werewolf dodges out the way, but your teammate flank it and finish it off, you gain 150 exp")
-                    global exp
                     exp = exp + 150
                     the_bridge
 
@@ -406,7 +401,6 @@ def deeper_cave():
                     fall2 = (random.randint(1,6))
                     total_fall = fall1 + fall2
                     print("you fall in, falling hard on your back, taking " + str(total_fall) + " damage")
-                    global health
                     if health - total_fall >= 1:
                          print("you live, but you are hurting.")
                          print("one of your party members throws down a rope, you grab on and climb back up, deciding to head back")
@@ -448,7 +442,6 @@ def deeper_cave():
                     spikes2 = (random.randint(1,6))
                     total_spikes = spikes + spikes2
                     print("your leg is pierced by the spikes, taking " + str(total_fall) + " damage")
-                    global health
                     if health - total_spikes >= 1:
                          print("you live, but you are hurting.")
                          print("now having your leg bleeding, you decide to head back")
@@ -470,7 +463,6 @@ def deeper_cave():
                     spikes2 = (random.randint(1,6))
                     total_spikes = spikes + spikes2
                     print("you fall in, falling hard on your back, taking " + str(total_spikes) + " damage")
-                    global health
                     if health - total_spikes >= 1:
                          print("you live, but you are hurting.")
                          print("one of your party members throws down a rope, you grab on and climb back up, deciding to head back")
@@ -506,12 +498,10 @@ def werewolf():
                          the_bridge
                     elif damage - 5 < 19:
                          print("the werewolf is still standing but your teammates finish it off, gain 150 exp")
-                         global exp
                          exp = exp + 150
                          the_bridge
                elif attack_werewolf < 16:
                     print("the werewolf dodges out the way, but your teammate flank it and finish it off you gain 150 exp")
-                    global exp
                     exp = exp + 150
                     the_bridge
           elif health <= 0:
@@ -526,17 +516,14 @@ def werewolf():
                     print("you deal " + str(damage - 5) + " to the werewolf")
                     if damage - 5 >= 20:
                          print("you immediately kill the werewolf in one swing, gaining 150 exp")
-                         global exp
                          exp = exp + 150
                          the_bridge
                     elif damage - 5 < 19:
                          print("the werewolf is still standing but your teammates finish it off, gain 150 exp")
-                         global exp
                          exp = exp + 150
                          the_bridge
           elif attack_werewolf < 16:
                     print("the werewolf dodges out the way, but your teammate flank it and finish it off, you gain 150 exp")
-                    global exp
                     exp = exp + 150
                     the_bridge
 
@@ -627,7 +614,6 @@ def bandits_troll():
           troll_damage = random.randint(1,10) + random.randint(1,6) + random.randint(1,6) + 4
           print("you hit the troll for" + str(troll_damage) + " damage")
           print("its standing but you noticed its wounds are not healing anymore")
-          global troll_hp
           troll_hp = troll_hp - troll_damage
           bandits_troll2
      if attack_troll + 5 < 16:
@@ -684,3 +670,5 @@ def troll_end():    #ending 3
           adv_start
      elif retry == 2:
           print("gg")
+
+adv_start
