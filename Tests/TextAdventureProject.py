@@ -24,19 +24,19 @@ def adv_start():
 
     if spot + 3 >= 14:
         print("As you are looking around, you spot a wolf watching you intently.") 
-        spot_wolf
+        spot_wolf()
 
     elif listen + 1 >= 14:
         print("You hear a sound from the brush around 20 feet away.")
-        hear_something      #this will ultimately lead to spot_wolf
+        hear_something()      #this will ultimately lead to spot_wolf
 
     elif spot + 3 >= 14 and listen + 1 >= 14:       #if you are good at gambling lol
         print("As you are looking around you hear something move, you look towards the sound and spot a wolf.")
-        spot_wolf       
+        spot_wolf()       
 
     else:
         print("You spot nothing out of the ordinary")
-        wolf_ambush
+        wolf_ambush()
     
 def spot_wolf():
     print("You are both staring at each other. What you you do?")       #different options you can choose, may lead to weaker or stronger encounters
@@ -57,20 +57,20 @@ def spot_wolf():
             AoO = input(">")
             AoO = int(AoO)
             if AoO == 1:
-                attack_wolf
+                attack_wolf()
 
             elif AoO == 2:
                 print("the wolf runs off.")
-                wolf_ambush
+                wolf_ambush()
 
     if choice == 2:
         print("as you start to move up to attack the wolf, it runs off before you can hit it.")
-        wolf_ambush
+        wolf_ambush()
 
 
     if choice == 3:
         print("you bend down and hold out your hand, allowing it to sniff it. it sniffs a bit before running off")
-        wolf_ambush
+        wolf_ambush()
 
 def attack_wolf():
     attack_AoO = (random.randint(1,20))
@@ -78,17 +78,17 @@ def attack_wolf():
 
     if attack_AoO + 6 >= 14:
             damage_AoO = (random.randint(1,10))
-            print("you hit the wolf and deal " + str(damage_AoO + 4) + "points of damage")      #im just now realizing how many nested if statements i need for this
+            print("you hit the wolf and deal " + str(damage_AoO + 4) + " points of damage")      #im just now realizing how many nested if statements i need for this
             if damage_AoO + 4 == 14:
                 print("you kill the wolf before it can return to its pack.")
-                wolf_ambush
+                wolf_ambush()
 
             else:
                 print("you injure the wolf, but it manages to escape.")
-                wolf_ambush
+                wolf_ambush()
     elif attack_AoO + 6 < 13:
                     print ("you miss the wolf as it runs away, back to its pack")
-                    wolf_ambush
+                    wolf_ambush()
 
 def hear_something():
      print("What would you like to do?")
@@ -99,10 +99,10 @@ def hear_something():
      heard_something = int(heard_something)
      if heard_something == 1:
           print("you walk over to where you saw the noise, and you see a wolf.")
-          spot_wolf
+          spot_wolf()
      elif heard_something == 2:
           print("you decided it is nothing, continuing your watch.")
-          wolf_ambush
+          wolf_ambush()
 
 def wolf_ambush():
      print("You continue on with your night, and eventually switchng places with ashmook, the party's monk.")
@@ -114,10 +114,10 @@ def wolf_ambush():
      choice2 = input(">")
      choice2 = int(choice2)
      if choice2 == 1:
-          attack_wolf2
+          attack_wolf2()
         
      elif choice2 == 2:
-          attract_wolfs
+          attract_wolfs()
 
 def attack_wolf2():
     print("you cast burning blade before striking the wolf")
@@ -133,13 +133,13 @@ def attack_wolf2():
          print("you hit the wolf, dealing " + str(total_charge + 5) + " damage")
          if total_charge + 5 >= 14:
               print("you instantly split the wolf in half, killing it")
-              party_wolf
+              party_wolf()
          elif total_charge + 5 < 13:
               print("you gravely injure the wolf, but it is still standing")
-              party_wolf
+              party_wolf()
     elif charge_wolf + 8 < 13:
          print("you strike at the wolf, but it dodges before you hit it.")
-         party_wolf
+         party_wolf()
 
 def attract_wolfs():
      print("you move up close to all the wolfs and you yell to get their attention")
@@ -171,11 +171,11 @@ def attract_wolfs():
           print("you dodge out the way of the last attack")
      
      if health < 0:
-          knocked_out
+          knocked_out()
      elif health >= 0:
-          party_wolf
+          party_wolf()
      elif health <= -10:      #this is a possiblity, as you need to get to -10 hp to fully die, or you get knocked out, and if all 3 wolfs hit max damage, they deal 21 damage
-          death
+          death()
 
 def party_wolf():
      print("your party members move in, killing three of them while your fighter, sherrif, is grappling a wolf")    #sherrif is spelled incorrectly on purpose
@@ -190,7 +190,7 @@ def party_wolf():
      choice = int(choice)
      if choice == 1:
           print("you are to tired for their shenanigans, you head back into your tent to take off your armor and head to sleep")
-          next_day
+          next_day()
      
      elif choice == 2:
         print("you decide to stay for a bit a before heading to sleep")
@@ -198,7 +198,7 @@ def party_wolf():
         print("You start healing everyone who took damage, bandaging everyone who took damage")
         print("Grey bane tried to heal you but failed, but ashmook successfully managed to heal you which everyone tried to heal you as well")        #this happened and everyone but ashmook rolled low
         print("you head back in your tent and head to sleep")
-        next_day
+        next_day()
 
 def next_day():
      global health
@@ -216,10 +216,10 @@ def next_day():
      if choice == 1:
           print("you call out to them, but all they do is get on the wolf and ride away")
           print("you know the wolf is too fast for you to catch up so you continue on your way")
-          day_night
+          day_night()
      elif choice == 2:
           print("you head into the brush, getting to about halfway to them before the person gets on the wolf and rides off")
-          day_night
+          day_night()
 
 def day_night():         # destroyed campsite
      print("other then the humanoid watching you, nothing else happens")
@@ -233,16 +233,16 @@ def day_night():         # destroyed campsite
      choice = input(">")
      choice = int(choice)
      if choice == 1:
-          investigation
+          investigation()
      elif choice == 2:
-          dirt_trail
+          dirt_trail()
      elif choice == 3:
           print("you decide to stay in the back of the caravan as you remember cortland left a box of books that cortland left open")
           print("one book catches your eye, Beware! Kygel's Keep. You open it up and start reading")
           print("Kygel's Keep was a castle that is right next to Carewick. Its lord mysteriously dissapeared and it was left in disrepair. it is said that a evil green dragon named kygel moved in below the castle. it is inhabited by Kobolds and mostly keep to themselves")
           print("your party members return from a cave you didnt see and it seems like reef took some fall damage as you were informed there was a pitfall trap.")
           print("you all decide that its best to keep going")
-          the_bridge
+          the_bridge()
 
 def investigation():
      print("you look at the bodies, and you see claw marks, but its too big to be a wolfs claw")
@@ -254,7 +254,7 @@ def investigation():
      choice = input(">")
      choice = int(choice)
      if choice == 1:
-          cave
+          cave()
      elif choice == 2:
           print("you decide to stay behind, watching the caravan while everyone else goes inside")
 
@@ -264,7 +264,7 @@ def the_bridge():
      global health
      health = 10
      print("you thank them and start crossing the bridge, when you get to around the middle of the bridge you hear a whistle and 8 bandits come out of hiding")
-     bandits
+     bandits()
 
 def dirt_trail():
      print ("you walk along the dirt trail and at the end of it there is a cave. there is a sign at the entrance with a skull engraved into it")
@@ -275,13 +275,13 @@ def dirt_trail():
      choice = input(">")
      choice = int(choice)
      if choice == 1:
-          cave
+          cave()
      elif choice == 2:
           print("you decide that its best to not to go into the cave, staying behind to protect the caravan")
-          the_bridge
+          the_bridge()
 
 def cave():
-     print("you carfully head into the cave, when you get the to sign you see that the cave goes to the left and the right")
+     print("you carefully head into the cave, when you get the to sign you see that the cave goes to the left and the right")
      print("to the left you see a barricade blocking your way, and to the right is another turn")
      print("what do you do?")
      print("1. head to the right")
@@ -291,13 +291,13 @@ def cave():
      choice = int(choice)
      if choice == 1:
           print("you walk deeper into the cave and you turn right again, seeing a body and a activated trap")
-          deeper_cave
+          deeper_cave()
      elif choice == 2:
           print("you aren't as strong as the other party members so you stand guard as they break it down")
-          break_bar
+          break_bar()
      elif choice == 3:
           print("you think this is too sketchy and you decide to head back")
-          the_bridge
+          the_bridge()
 
 def break_bar():
      print("while your party members are breaking down the barricade, you see a werewolf come from the other side of the cave")
@@ -314,23 +314,23 @@ def break_bar():
                attack_werewolf = random.randint(1,20)
                if attack_werewolf + 6 >= 16:
                     damage = (random.randint(1,10)) + (random.randint(1,6)) + (random.randint(1,6)) + 4
-                    print("you deal " + str(damage - 5) + " to the werewolf")
+                    print("you deal " + str(damage - 5) + " damage to the werewolf")
                     if damage - 5 >= 20:
                          print("you immediately kill the werewolf in one swing, gaining 150 exp")
                          global exp
                          exp = exp + 150
-                         the_bridge
+                         the_bridge()
                     elif damage - 5 < 19:
                          print("the werewolf is still standing but your teammates finish it off, gain 150 exp")
                          exp = exp + 150
-                         the_bridge
+                         the_bridge()
                elif attack_werewolf < 16:
                     print("the werewolf dodges out the way, but your teammate flank it and finish it off you gain 150 exp")
                     exp = exp + 150
-                    the_bridge
+                    the_bridge()
           elif health <= 0:
                print("you are knocked unconscious")
-               knocked_out
+               knocked_out()
      elif bite + 5 < 17:
           print("the bite misses, allowing you to attack back")
           print("you decide that you need to do as much damage as possible, using burning blade and clinging shadow strike")
@@ -341,15 +341,15 @@ def break_bar():
                     if damage - 5 >= 20:
                          print("you immediately kill the werewolf in one swing, gaining 150 exp")
                          exp = exp + 150
-                         the_bridge
+                         the_bridge()
                     elif damage - 5 < 19:
                          print("the werewolf is still standing but your teammates finish it off, gain 150 exp")
                          exp = exp + 150
-                         the_bridge
+                         the_bridge()
           elif attack_werewolf < 16:
                     print("the werewolf dodges out the way, but your teammate flank it and finish it off, you gain 150 exp")
                     exp = exp + 150
-                    the_bridge
+                    the_bridge()
 
 def deeper_cave():
      print("you walk past the body, moving silently")
@@ -374,7 +374,7 @@ def deeper_cave():
                if reflex_devil + 7 >= 20:
                     print("you just barely jump out the way, as a 15 foot hole opens up before you")
                     print("knowing there are dangerous traps, you head back")
-                    the_bridge
+                    the_bridge()
                elif reflex_devil + 7 < 20:
                     fall1 = (random.randint(1,6))
                     fall2 = (random.randint(1,6))
@@ -384,18 +384,18 @@ def deeper_cave():
                     if health - total_fall >= 1:
                          print("you live, but you are hurting.")
                          print("one of your party members throws down a rope, you grab on and climb back up, deciding to head back")
-                         the_bridge
+                         the_bridge()
                     
                     elif health - total_fall < 0:
                          print("you are knocked unconscious")
-                         knocked_out
+                         knocked_out()
           elif devils_favor == 2:
                reflex_save = (random.randint(1,20))
                print("you rolled " + str(reflex_save + 5) + " for reflex")
                if reflex_save + 5 >= 20:
                     print("you just barely jump out the way, as a 15 foot hole opens up before you")
                     print("knowing there are dangerous traps, you head back")
-                    the_bridge
+                    the_bridge()
                elif reflex_save + 5 < 20:
                     fall1 = (random.randint(1,6))
                     fall2 = (random.randint(1,6))
@@ -404,11 +404,11 @@ def deeper_cave():
                     if health - total_fall >= 1:
                          print("you live, but you are hurting.")
                          print("one of your party members throws down a rope, you grab on and climb back up, deciding to head back")
-                         the_bridge
+                         the_bridge()
                     
                     elif health - total_fall < 0:
                          print("you are knocked unconscious")
-                         knocked_out
+                         knocked_out()
      elif choice == 2:
           print("you follow the right wall, being careful to not activate any traps")
           print("you successfully make it to the door, do you open it?")
@@ -418,11 +418,11 @@ def deeper_cave():
           door = int(door)
           if door == 1:
                print("you open the door carefully, as you see a werewolf, eating a corpse")
-               werewolf
+               werewolf()
           
           elif door == 2:
                print("deeming this too risky, you decide to head back with your party")
-               the_bridge
+               the_bridge()
      elif choice == 3:
           print("you walk along the left wall, as spikes come from a wall")
           print("because of your race, you have a devils favor which will increase your reflex by +2. do you use it?")
@@ -436,7 +436,7 @@ def deeper_cave():
                if reflex_devil2 + 7 >= 20:
                     print("you step back before the spikes can hit you")
                     print("knowing there are dangerous traps, you head back")
-                    the_bridge
+                    the_bridge()
                elif reflex_devil2 + 7 < 20:
                     spikes = (random.randint(1,6))
                     spikes2 = (random.randint(1,6))
@@ -445,11 +445,11 @@ def deeper_cave():
                     if health - total_spikes >= 1:
                          print("you live, but you are hurting.")
                          print("now having your leg bleeding, you decide to head back")
-                         the_bridge
+                         the_bridge()
                     
                     elif health - total_fall < 0:
                          print("you are knocked unconscious")
-                         knocked_out
+                         knocked_out()
 
           elif devils_favor2 == 2:
                reflex_save2 = (random.randint(1,20))
@@ -457,7 +457,7 @@ def deeper_cave():
                if reflex_save2 + 5 >= 20:
                     print("you just barely jump out the way, as a 15 foot hole opens up before you")
                     print("knowing there are dangerous traps, you head back")
-                    the_bridge
+                    the_bridge()
                elif reflex_save2 + 5 < 20:
                     spikes = (random.randint(1,6))
                     spikes2 = (random.randint(1,6))
@@ -466,14 +466,14 @@ def deeper_cave():
                     if health - total_spikes >= 1:
                          print("you live, but you are hurting.")
                          print("one of your party members throws down a rope, you grab on and climb back up, deciding to head back")
-                         the_bridge
+                         the_bridge()
                     
                     elif health - total_spikes < 0:
                          print("you are knocked unconscious")
-                         knocked_out
+                         knocked_out()
      elif choice == 4:
           print("you decide to be careful, heading back to the caravan")
-          the_bridge
+          the_bridge()
 
 def werewolf():
      print("the werewolfs head snaps to your party, as it readies its claws")
@@ -495,18 +495,18 @@ def werewolf():
                          print("you immediately kill the werewolf in one swing, gaining 150 exp")
                          global exp
                          exp = exp + 150
-                         the_bridge
+                         the_bridge()
                     elif damage - 5 < 19:
                          print("the werewolf is still standing but your teammates finish it off, gain 150 exp")
                          exp = exp + 150
-                         the_bridge
+                         the_bridge()
                elif attack_werewolf < 16:
                     print("the werewolf dodges out the way, but your teammate flank it and finish it off you gain 150 exp")
                     exp = exp + 150
-                    the_bridge
+                    the_bridge()
           elif health <= 0:
                print("you are knocked unconscious")
-               knocked_out
+               knocked_out()
      elif bite + 5 < 17:
           print("the bite misses, allowing you to attack back")
           print("you decide that you need to do as much damage as possible, using burning blade and clinging shadow strike")
@@ -517,22 +517,22 @@ def werewolf():
                     if damage - 5 >= 20:
                          print("you immediately kill the werewolf in one swing, gaining 150 exp")
                          exp = exp + 150
-                         the_bridge
+                         the_bridge()
                     elif damage - 5 < 19:
                          print("the werewolf is still standing but your teammates finish it off, gain 150 exp")
                          exp = exp + 150
-                         the_bridge
+                         the_bridge()
           elif attack_werewolf < 16:
                     print("the werewolf dodges out the way, but your teammate flank it and finish it off, you gain 150 exp")
                     exp = exp + 150
-                    the_bridge
+                    the_bridge()
 
 def knocked_out():
      print("you wake up, being healed by a druid, you stand up and start walking towards the bridge")
      print("when you get to the middle of the bridge, you hear a whistle and 8 bandits come out of holes surrounding the bridge")
      global health
      health = 10
-     bandits
+     bandits()
 
 def death():        #ending 1
      print("as your life slips away from you, you feel your soul return to him")
@@ -543,7 +543,7 @@ def death():        #ending 1
      retry = input(">")
      retry = int(retry)
      if retry == 1:
-          adv_start
+          adv_start()
      elif retry == 2:
           print("gg")
 
@@ -559,14 +559,14 @@ def bandits():
      choice = int(choice)
      if choice == 1:
           print("your party pays them off, allowing you access to the rest of the trail to carewick")
-          carewick_poor
+          carewick_poor()
      if choice == 2:
           print("you talk amoung your party members, deciding it is best to fight them, you decide to fight the bandit boss alone while everyone else holds off the others")
           print("before you can start fighting them, a troll comes out the woods, you and the bandit boss agree you have bigger problems")
-          bandits_troll
+          bandits_troll()
      if choice == 3:
           print("you talk to them attempting to stall them, hoping for a miracle")
-          stalling
+          stalling()
 
 def carewick_poor():          #ending 2
      print("you make it to Carewick with the boxes and your lives, but with no gold")
@@ -582,7 +582,7 @@ def carewick_poor():          #ending 2
      retry = input(">")
      retry = int(retry)
      if retry == 1:
-          adv_start
+          adv_start()
      elif retry == 2:
           print("gg")
 
@@ -596,11 +596,11 @@ def stalling():
      if choice == 1:
           print("you keep stalling, when the bandit comes running back being chased by a troll")
           print("you turn to the bandit boss and after a bit of talking, convice him that you should work together")
-          bandits_troll
+          bandits_troll()
      if choice == 2:
           print("you decide its best to not push it, but but then the bandit comes running back, being chased by a troll")
           print("you manage to convince the bandit boss that we have a bigger problem then eachother")
-          bandits_troll
+          bandits_troll()
 
 def bandits_troll():
      print("you all ready up, as the fighting begins")
@@ -615,10 +615,10 @@ def bandits_troll():
           print("you hit the troll for" + str(troll_damage) + " damage")
           print("its standing but you noticed its wounds are not healing anymore")
           troll_hp = troll_hp - troll_damage
-          bandits_troll2
+          bandits_troll2()
      if attack_troll + 5 < 16:
           print("your attack bounces off its hide")
-          bandits_troll2
+          bandits_troll2()
 
 def bandits_troll2():
      print("you see a strike hit the bandit boss, and it looks like he is on his last legs")
@@ -638,15 +638,15 @@ def bandits_troll2():
                health = health - 7
                print("you see your teammates finish off some other bandits")
                print("you manage to get a sneaky strike in, dropping to his knees")
-               troll_end
+               troll_end()
           if enemy_bandit < 16:
                print("you spin around and parry his strike, as you see your party kill more bandits")
                print("you manage to get a sneaky strike in, dropping to his knees")
-               troll_end
+               troll_end()
      if choice == 2:
           print("you strike at the bandit in the confusion, making him fall to the ground")
           print("you see the troll kill another bandit as one of your party members finish off the troll")
-          troll_end
+          troll_end()
 
 def troll_end():    #ending 3
      print("there are 4 bandits left as your party moves up")
@@ -655,6 +655,8 @@ def troll_end():    #ending 3
      print("you level up")
      global exp
      exp = exp + 1000
+     global level
+     level = level + 1 
      print("beaten and battered, you keep heading down the trail to carewick")
      print("you make it into the city and head over to cortlands brother, and he gives you the 100 gold as promised")
      print("he gives you another job, to pass the boxes around the city, you complete it for 6 gold")
@@ -667,8 +669,8 @@ def troll_end():    #ending 3
      retry = input(">")
      retry = int(retry)
      if retry == 1:
-          adv_start
+          adv_start()
      elif retry == 2:
           print("gg")
 
-adv_start
+adv_start()
