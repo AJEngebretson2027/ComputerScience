@@ -14,7 +14,7 @@ best_elden_ring_weapons = ["blasphemous blade", "moonveil", "rivers of blood", "
 
 #INDEX       0      1     2     3
 best_years = [1776, 1985, 1994, 1957]
-print(best_years.index(2001))
+print(best_years)
 
 #print the best elden ring weapon
 print(best_elden_ring_weapons[0])
