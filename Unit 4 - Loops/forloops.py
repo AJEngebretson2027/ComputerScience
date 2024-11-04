@@ -38,5 +38,4 @@ import random
 
 sum = [random.randint(1,100), random.randint(1,100), random.randint(1,100), random.randint(1,100), random.randint(1,100)]
 for i in sum:
-    sum = sum + i
-    print(sum)
+    
