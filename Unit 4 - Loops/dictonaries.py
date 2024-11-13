@@ -9,7 +9,7 @@
 #lists uses brackets, dictionaries use braces
 AJ ={
     "name": "AJ",
-    "age": "31",
+    "age": "16",
     "city": "st Michael",
     "pets": "4",
     "height": 6.2
